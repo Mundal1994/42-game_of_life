@@ -1,18 +1,24 @@
 NAME = life
-#NAME2 = visu-hex
+#NAME2 = life_vis
 
 CC = gcc -Wall -Wextra -Werror
 
-C = srcs/
-S = visualizer/
+C = first_srcs/
+#F = output_file/
+#S = visualizer/
 
 SRC = $(C)main.c
+SRC += $(C)read_file.c
+SRC += $(C)game_of_life.c
+SRC += $(C)game_of_life_vis.c
 
-#SRC2 = $(S)main.c
+#SRC2 = $(C)main.c
+#SRC2 += $(C)read_file.c
+#SRC2 += $(F)game_of_life.c
 
 MAKELIB = make -C libft/ fclean && make -C libft/
 
-all: $(NAME)# $(NAME2)
+all: $(NAME) $(NAME2)
 $(NAME): $(SRC)
 	$(MAKELIB)
 	$(CC) $(SRC) ./libft/libft.a -o $(NAME)
@@ -27,7 +33,6 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME)
 	make -C libft/ fclean
-#removed this two lines up $(NAME2)
 
 re: fclean all
 
