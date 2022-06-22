@@ -11,17 +11,17 @@ SRC += $(C)read_file.c
 SRC += $(C)game_of_life.c
 SRC += $(C)game_of_life_vis.c
 
-SRC2 = $(S)main.c
-SRC2 += $(S)read_file.c
+SRC2 = $(C)main.c
+SRC2 += $(C)read_file.c
 SRC2 += $(S)game_of_life.c
-SRC2 += $(S)game_of_life_vis.c
+SRC2 += $(C)game_of_life_vis.c
 
 MAKELIB = make -C libft/ fclean && make -C libft/
 
 all: $(NAME) $(NAME2)
 $(NAME): $(SRC)
 	$(MAKELIB)
-	$(CC) $(SRC) ./libft/libft.a -o $(NAME)
+	$(CC) -O1 $(SRC) ./libft/libft.a -o $(NAME)
 $(NAME2): $(SRC2)
 	$(MAKELIB)
 	$(CC) $(SRC2) ./libft/libft.a -o $(NAME2)
