@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:24:27 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/22 14:26:05 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:22:26 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ typedef struct s_sdl
 typedef struct s_map
 {
 	char		*file;
-	int			**matrix;
+	int			***matrix;
 	int			width;
 	int			height;
+	int			iterations;
 }				t_map;
 
 /*-------FRAMES-------*/
