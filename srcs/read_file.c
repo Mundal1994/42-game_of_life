@@ -1,4 +1,4 @@
-#include "life.h"
+#include "../includes/life.h"
 
 static int	error(t_data *data)
 {

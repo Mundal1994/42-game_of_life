@@ -1,4 +1,4 @@
-#include "life.h"
+#include "../includes/life.h"
 
 static int	is_pos_digit(char *argv)
 {

@@ -16,7 +16,7 @@ typedef struct s_data
 int		read_file(char *file, t_data *data);
 void	game_of_life(t_data *data, int iterations);
 void	game_of_life_vis(t_data *data, int iterations);
-void	algorithm(t_data *data);
 void	array_copy(t_data *data);
+void	algorithm(t_data *data);
 
 #endif
