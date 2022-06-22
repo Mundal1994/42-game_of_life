@@ -23,10 +23,7 @@ static int count_size(FILE *fp, t_data *data)
 	{
 		ret = get_next_line(fp, &line);
 		if (ret == 0)
-		{
-			free (line);
 			break ;
-		}
 		else if (ret == -1)
 			return (ERROR);
 		data->total_y++;
