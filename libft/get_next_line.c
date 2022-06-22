@@ -12,116 +12,96 @@
 
 #include "libft.h"
 
-static int	ft_not_end_of_str(const int fd, char **str, char **line, int len)
+static int	ft_not_end_of_str(char **str, char **line, int len)
 {
 	char	*temp;
 
-	*line = ft_strsub(str[fd], 0, len);
+	*line = ft_strsub(str[0], 0, len);
 	if (!(*line))
 	{
 		str = ft_free2d(str);
 		return (ERROR);
 	}
-	temp = str[fd];
-	str[fd] = ft_strdup(&temp[len + 1]);
-	if (!str[fd])
+	temp = str[0];
+	str[0] = ft_strdup(&temp[len + 1]);
+	if (!str[0])
 		return (ERROR);
 	ft_strdel(&temp);
-	if (str[fd][0] == '\0')
-		ft_strdel(&str[fd]);
+	if (str[0][0] == '\0')
+		ft_strdel(&str[0]);
 	return (0);
 }
 
-static int	ft_str_to_line(const int fd, char **str, char **line)
+static int	ft_str_to_line(char **str, char **line)
 {
 	int	len;
 
-	len = ft_strlen_stop(str[fd], '\n');
-	if (str[fd][len] == '\0')
+	len = ft_strlen_stop(str[0], '\n');
+	if (str[0][len] == '\0')
 	{
-		*line = ft_strdup(str[fd]);
+		*line = ft_strdup(str[0]);
 		if (!(*line))
 		{
 			str = ft_free2d(str);
 			return (ERROR);
 		}
-		ft_strdel(&str[fd]);
+		ft_strdel(&str[0]);
 	}
 	else
-		if (ft_not_end_of_str(fd, str, line, len) == ERROR)
+		if (ft_not_end_of_str(str, line, len) == ERROR)
 			return (ERROR);
 	return (0);
 }
 
-static int	ft_buf_to_str(const int fd, char **str, char *buf, char **line)
+static int	ft_buf_to_str( char **str, char *buf, char **line)
 {
 	char	*temp;
 
-	if (str[fd])
+	if (str[0])
 	{
-		temp = str[fd];
-		str[fd] = ft_strjoin(temp, buf);
+		temp = str[0];
+		str[0] = ft_strjoin(temp, buf);
 		ft_strdel(&temp);
-		if (!str[fd])
+		if (!str[0])
 		{
-			ft_strdel(&str[fd]);
+			ft_strdel(&str[0]);
 			return (ERROR);
 		}
 	}
 	else
 	{
-		str[fd] = ft_strdup(buf);
-		if (!str[fd])
+		str[0] = ft_strdup(buf);
+		if (!str[0])
 			return (ERROR);
 	}
-	if (ft_strchr(str[fd], '\n') != NULL)
-		if (ft_str_to_line(fd, str, line) == ERROR)
+	if (ft_strchr(str[0], '\n') != NULL)
+		if (ft_str_to_line(str, line) == ERROR)
 			return (ERROR);
 	return (0);
 }
 
-static int	ft_binary_check(char *buf, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (buf[i] != '\0')
-	{
-		if (ft_isascii(buf[i]) == 1 || ft_isxdigit(buf[i]) == 1)
-			return (FALSE);
-		if (ft_isoctal(buf[i]) == 1)
-			return (FALSE);
-		i++;
-	}
-	if (*str)
-		ft_strdel(&str);
-	return (TRUE);
-}
-
-int	get_next_line(const int fd, char **line)
+int	get_next_line(FILE *fd, char **line)
 {	
-	static char	*str[FD_SIZE];
+	static char	*str[1];
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
 
-	if (fd <= -1 || fd >= FD_SIZE || !line || BUFF_SIZE < 1)
+	if (!line || BUFF_SIZE < 1)
 		return (ERROR);
 	*line = NULL;
-	while ((!str[fd] || ft_strchr(str[fd], '\n') == NULL) && !(*line))
+	while ((!str[0] || ft_strchr(str[0], '\n') == NULL) && !(*line))
 	{
-		ret = read(fd, buf, BUFF_SIZE);
+		ret = fread(buf, sizeof(char), BUFF_SIZE, fd);
 		if (ret <= 0)
 			break ;
 		buf[ret] = '\0';
-		if (ft_binary_check(buf, str[fd]) == TRUE)
-			return (0);
-		if (ft_buf_to_str(fd, str, buf, line) == ERROR)
+		if (ft_buf_to_str(str, buf, line) == ERROR)
 			return (ERROR);
 	}
-	if ((ret == 0 && !str[fd]) && !(*line))
+	if ((ret == 0 && !str[0]) && !(*line))
 		return (0);
 	if (!(*line))
-		if (ret == -1 || ft_str_to_line(fd, str, line) == ERROR)
+		if (ret == -1 || ft_str_to_line(str, line) == ERROR)
 			return (ERROR);
 	return (1);
 }

@@ -6,7 +6,7 @@ static int	is_pos_digit(char *argv)
 
 	while (argv[i] != '\0')
 	{
-		if (ft_isdigit(argv[i]) == 0)
+		if (isdigit(argv[i]) == 0)
 			return (FALSE);
 		++i;
 	}
@@ -18,14 +18,31 @@ int	main(int argc, char **argv)
 	if (argc == 3 && is_pos_digit(argv[2]) == TRUE)
 	{
 		if (argv && argc)
-			ft_printf("correct\n");
+			printf("correct\n");
 		// collect initial map file info from argv[1]
-
+		FILE *fp;
+		int ret;
+		char *line;
+		fp = fopen(argv[1], "r");
+		line = NULL;
+		ret = get_next_line(fp, &line);
+		printf("line: %s\n", line);
+		while (ret > 0)
+		{
+			ret = get_next_line(fp, &line);
+			if (ret == 0)
+			{
+				free (line);
+				break ;
+			}
+			printf("line: %s\n", line);
+			free(line);
+		}
 		// play game of life
 		
 	}
 	else
-		ft_printf("Usage: ./life maps/initial_state iterations\n");
+		printf("Usage: ./life maps/initial_state iterations\n");
 	return (0);
 }
 
