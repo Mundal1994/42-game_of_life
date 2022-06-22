@@ -1,4 +1,4 @@
-#include "life.h"
+#include "../includes/life.h"
 
 static void	write_to_file(t_data *data, FILE *fp, int iteration)
 {

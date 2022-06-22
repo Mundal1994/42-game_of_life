@@ -9,11 +9,13 @@ S = first_srcs/
 SRC = $(C)main.c
 SRC += $(C)read_file.c
 SRC += $(C)game_of_life.c
+SRC += $(C)algorithm.c
 SRC += $(C)game_of_life_vis.c
 
 SRC2 = $(C)main.c
 SRC2 += $(C)read_file.c
 SRC2 += $(S)game_of_life.c
+SRC2 += $(C)algorithm.c
 SRC2 += $(C)game_of_life_vis.c
 
 MAKELIB = make -C libft/ fclean && make -C libft/

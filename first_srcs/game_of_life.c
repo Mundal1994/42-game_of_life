@@ -1,4 +1,4 @@
-#include "life.h"
+#include "../includes/life.h"
 
 static int	count_live_neighbors(t_data *data, int i, int j)
 {
@@ -57,25 +57,7 @@ static int	check_dead_cell(t_data *data, int y, int x)
 		return (FALSE);
 }
 
-void	array_copy(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < data->total_y)
-	{
-		j = 0;
-		while (j < data->total_x)
-		{
-			data->map[i][j] = data->temp[i][j];
-			++j;
-		}
-		++i;
-	}
-}
-
-void	algorithm(t_data *data)
+static void	first_algorithm(t_data *data)
 {
 	int	i;
 	int	j;
@@ -106,6 +88,24 @@ void	algorithm(t_data *data)
 	}
 }
 
+void	array_copy(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->total_y)
+	{
+		j = 0;
+		while (j < data->total_x)
+		{
+			data->map[i][j] = data->temp[i][j];
+			++j;
+		}
+		++i;
+	}
+}
+
 static void	print_iteration(t_data *data)
 {
 	int	i;
@@ -125,7 +125,7 @@ void	game_of_life(t_data *data, int iterations)
 	i = 0;
 	while (i < iterations)
 	{
-		algorithm(data);
+		first_algorithm(data);
 		array_copy(data);
 		++i;
 	}
