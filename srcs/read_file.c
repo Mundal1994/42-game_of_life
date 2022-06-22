@@ -3,7 +3,9 @@
 static int	error(t_data *data)
 {
 	if (data->map)
-		data->map = ft_free2d(data->map);
+		ft_free2d(data->map);
+	if (data->temp)
+		ft_free2d(data->map);
 	if (data)
 		free(data);
 	return (ERROR);
@@ -73,9 +75,7 @@ static int	make_maps(FILE *fp, t_data *data)
 	{
 		ret = get_next_line(fp, &line);
 		if (ret == 0)
-		{
 			break ;
-		}
 		else if (ret == -1)
 			return (ERROR);
 		strcpy(data->map[i], line);
@@ -83,6 +83,8 @@ static int	make_maps(FILE *fp, t_data *data)
 		i++;
 		free (line);
 	}
+	data->map[i] = 0;
+	data->temp[i] = 0;
 	return (0);
 }
 

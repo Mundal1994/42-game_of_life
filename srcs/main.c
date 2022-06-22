@@ -26,10 +26,8 @@ static int	initialize_functions(char **argv, int i)
 		game_of_life(data, atoi(argv[2 + i]));
 	else
 		game_of_life_vis(data, atoi(argv[2 + i]));
-	data->map = ft_free2d(data->map);
-	free (data->map);
-	data->temp = ft_free2d(data->temp);
-	free (data->temp);
+	ft_free2d(data->map);
+	ft_free2d(data->temp);
 	free (data);
 	return (0);
 }
