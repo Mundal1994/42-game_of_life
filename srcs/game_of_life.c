@@ -33,12 +33,15 @@ static void	print_iteration(t_data *data)
 void	game_of_life(t_data *data, int iterations)
 {
 	int	i;
+	int	modified;
 
 	i = 0;
 	while (i < iterations)
 	{
-		algorithm(data);
-		array_copy(data);
+		modified = FALSE;
+		algorithm(data, &modified);
+		if (modified == TRUE)
+			array_copy(data);
 		++i;
 	}
 	print_iteration(data);
