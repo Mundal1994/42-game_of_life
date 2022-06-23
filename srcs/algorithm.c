@@ -68,12 +68,16 @@ void	algorithm(t_data *data)
 			if (data->map[i][j] == '.')
 			{
 				if (check_dead_cell(data, i, j, 0) == TRUE)
+				{
 					data->temp[i][j] = 'X';
+				}
 			}
 			else
 			{
 				if (check_live_cell(data, i, j, 0) == FALSE)
+				{
 					data->temp[i][j] = '.';
+				}
 			}
 			++j;
 		}
