@@ -3,7 +3,7 @@
 ## How to run
 
 1. make all
-2. three executables have been created life (newest and fastests algorithm), first_life (first algorithm) and infinite_life (changed algorithm to become an infinite map)
+2. three executables have been created 'first_life' (first algorithm), 'life' (fastest algorithm with boundary condition) and 'infinite_life' (fastest algorithm with infinite map)
 	./life maps/initial_state iterations
 
 
