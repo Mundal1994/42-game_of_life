@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:24:27 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/23 12:19:37 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:27:22 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,9 @@ void	init_sdl(t_core *core);
 /*--------RENDER-------*/
 void	render_frame(t_core *core);
 void	display_step(t_core *core);
+
+/*-------CONTROLS------*/
+void	controls(t_core *core);
+void	on_keydown(t_core *core);
 
 #endif

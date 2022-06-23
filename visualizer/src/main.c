@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:52:59 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/23 11:54:44 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:58:13 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,6 @@ int	main(int argc, char **argv)
 		error_print(&core, "Usage: ./visualizer <valid_map_path>");
 	core.map.file = argv[1];
 	init(&core);
-	//-------------- PRINT MAP
-	int x = 0;
-	int y = 0;
-	printf("Iterations: %d\n", core.map.iterations);
-	while (y < core.map.file_height)
-	{
-		while (x < core.map.width)
-		{
-			if (core.map.matrix[y][x] == -1)
-			{
-				printf("\n");
-				y++;
-				x = 0;
-			}
-			printf("%d ", core.map.matrix[y][x]);
-			x++;
-		}
-		printf("\n");
-		x = 0;
-		y++;
-	}
-	//-----------------------
 	core.is_runing = 1;
 	while (core.is_runing == 1)
 	{
@@ -77,6 +55,19 @@ int	main(int argc, char **argv)
 		{
 			if (core.sdl.event.type == SDL_QUIT)
 				core.is_runing = 0;
+			if (core.sdl.event.type == SDL_KEYDOWN)
+			{
+				if (core.sdl.event.key.keysym.sym == SDLK_RIGHT)
+				{
+					if (core.map.step < core.map.iterations)
+						core.map.step++;
+				}
+				if (core.sdl.event.key.keysym.sym == SDLK_LEFT)
+				{
+					if (core.map.step > 0)
+						core.map.step--;
+				}
+			}
 		}
 	}
 	exit_visualizer(&core);
