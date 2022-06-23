@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:52:59 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/22 15:53:34 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:54:44 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	exit_visualizer(t_core *core)
 	int	i;
 
 	i = 0;
-/*	if (core->map.matrix)
+	if (core->map.matrix)
 	{
-		while (i < core->map.height)
+		while (i < core->map.file_height)
 		{
 			if (core->map.matrix[i])
 				free(core->map.matrix[i]);
 			i++;
 		}
 		free(core->map.matrix);
-	}*/
+	}
 	if (core->sdl.win)
 		SDL_DestroyWindow(core->sdl.win);
 	SDL_Quit();
@@ -50,28 +50,29 @@ int	main(int argc, char **argv)
 	//-------------- PRINT MAP
 	int x = 0;
 	int y = 0;
-	int z = 0;
-	while (z < core.map.iterations)
+	printf("Iterations: %d\n", core.map.iterations);
+	while (y < core.map.file_height)
 	{
-		while (y < core.map.height)
+		while (x < core.map.width)
 		{
-			while (x < core.map.width)
+			if (core.map.matrix[y][x] == -1)
 			{
-				printf("%d ", core.map.matrix[z][y][x]);
-				x++;
+				printf("\n");
+				y++;
+				x = 0;
 			}
-			printf("\n");
-			x = 0;
-			y++;
+			printf("%d ", core.map.matrix[y][x]);
+			x++;
 		}
-		y = 0;
-		z++;
+		printf("\n");
+		x = 0;
+		y++;
 	}
 	//-----------------------
 	core.is_runing = 1;
 	while (core.is_runing == 1)
 	{
-	//	render_frame(&core);
+		render_frame(&core);
 		while (SDL_PollEvent(&core.sdl.event))
 		{
 			if (core.sdl.event.type == SDL_QUIT)

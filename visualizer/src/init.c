@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:44:33 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/22 13:09:29 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:19:39 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	init(t_core *core)
 {
+	core->map.file_height = 0;
+	core->map.height = 0;
+	core->map.width = 0;
+	core->map.iterations = 0;
+	core->map.step = 0;
+	read_map(core);
 	init_sdl(core);
 }
 
 void	init_sdl(t_core *core)
 {
-	read_map(core);
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) != 0)
 		error_print(core, "Error: Failed to initialize SDL2");
 	core->sdl.win = SDL_CreateWindow("Game of Life - Visualizer", 0, 0, WIN_W, WIN_H, 0);
