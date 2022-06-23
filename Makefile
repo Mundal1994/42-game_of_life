@@ -28,6 +28,9 @@ $(NAME2): $(SRC2)
 	$(MAKELIB)
 	$(CC) $(SRC2) ./libft/libft.a -o $(NAME2)
 
+vis:
+	make -C visualizer/ all;
+
 clean:
 	/bin/rm -f *.o
 	make -C libft/ clean
@@ -38,4 +41,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re vis

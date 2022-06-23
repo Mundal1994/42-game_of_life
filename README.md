@@ -10,4 +10,11 @@
 
 ## How to run visualizer
 
-To run visualizer an external library have to be installed.
+1. run the following command
+	make vis
+2. visualizer should then compile (can take a few minutes)
+3. when compilation is finished run the following script
+	you can choose to run life or infinite_life
+
+	./run-vis.sh life maps/initial_state iterations
+

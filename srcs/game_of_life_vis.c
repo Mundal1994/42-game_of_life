@@ -19,7 +19,7 @@ void	game_of_life_vis(t_data *data, int iterations)
 	int		i;
 
 	i = 0;
-	fp = fopen("iterations.txt", "w");
+	fp = fopen("instructions.txt", "w");
 	write_to_file(data, fp, i);
 	while (i < iterations)
 	{
