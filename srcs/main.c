@@ -21,7 +21,10 @@ static int	initialize_functions(char **argv, int i)
 	if (!data)
 		return (0);
 	if (read_file(argv[1 + i], data) == ERROR)
+	{
+		error(data);
 		return (0);
+	}
 	if (i == 0)
 		game_of_life(data, atoi(argv[2 + i]));
 	else

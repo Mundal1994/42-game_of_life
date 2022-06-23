@@ -1,6 +1,6 @@
 #include "../includes/life.h"
 
-static int	error(t_data *data)
+int	error(t_data *data)
 {
 	if (data->map)
 		ft_free2d(data->map);
