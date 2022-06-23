@@ -54,7 +54,7 @@ static int	check_dead_cell(t_data *data, int y, int x, int count)
 	return (FALSE);
 }
 
-void	algorithm(t_data *data, int *modified)
+void	algorithm(t_data *data)
 {
 	int	i;
 	int	j;
@@ -70,8 +70,6 @@ void	algorithm(t_data *data, int *modified)
 				if (check_dead_cell(data, i, j, 0) == TRUE)
 				{
 					data->temp[i][j] = 'X';
-					if (*modified == FALSE)
-						*modified = TRUE;
 				}
 			}
 			else
@@ -79,8 +77,6 @@ void	algorithm(t_data *data, int *modified)
 				if (check_live_cell(data, i, j, 0) == FALSE)
 				{
 					data->temp[i][j] = '.';
-					if (*modified == FALSE)
-						*modified = TRUE;
 				}
 			}
 			++j;

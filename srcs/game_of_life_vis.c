@@ -17,17 +17,14 @@ void	game_of_life_vis(t_data *data, int iterations)
 {
 	FILE	*fp;
 	int		i;
-	int		modified;
 
 	i = 0;
 	fp = fopen("iterations.txt", "w");
 	write_to_file(data, fp, i);
 	while (i < iterations)
 	{
-		modified = FALSE;
-		algorithm(data, &modified);
-		if (modified == TRUE)
-			array_copy(data);
+		algorithm(data);
+		array_copy(data);
 		++i;
 		write_to_file(data, fp, i);
 	}
