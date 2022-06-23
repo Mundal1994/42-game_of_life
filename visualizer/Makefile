@@ -105,7 +105,7 @@ fclean: clean
 	@echo "$(NAME): $(YELLOW)$(LIBFT) was deleted$(RESET)"
 	@rm -f $(NAME)
 	@echo "$(NAME): $(YELLOW)$(NAME) was deleted$(RESET)"
-#	@rm -fr $(SDL_DIR)build/
-#	@echo "$(NAME): $(YELLOW)SDL2 was uninstalled.$(RESET)"
+	@rm -fr $(SDL_DIR)build/
+	@echo "$(NAME): $(YELLOW)SDL2 was uninstalled.$(RESET)"
 
 re: fclean all
