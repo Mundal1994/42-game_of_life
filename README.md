@@ -1,10 +1,13 @@
 ## GAME-OF-LIFE
 
+## ABOUT
+
+The Game of Life (or Life) is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The evolution is determined by its initial state and isn't in need of any input from any player (therefor a zero-player game). One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
+
 ## HOW TO RUN GAME OF LIFE
 
 	1. make all
 	2. three executables have been created 'first_life' (first algorithm), 'life' (fastest algorithm with boundary condition) and 'infinite_life' (fastest algorithm with infinite map)
-		
 		for iterations pick a positive number
 
 		./life maps/initial_state (iterations)
