@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:24:27 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/23 17:27:22 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 19:48:03 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,9 @@ typedef struct s_map
 	int			width;
 	int			iterations;
 	int			step;
+	int			automatic;
+	int			delay;
 }				t_map;
-
-/*-------FRAMES-------*/
-typedef struct frames
-{
-	double		time;
-	double		old_time;
-	double		frame_time;
-	double		fps;
-}				t_frames;
 
 /*--------CORE--------*/
 typedef struct s_core
@@ -59,7 +52,6 @@ typedef struct s_core
 	t_sdl		sdl;
 	t_map		map;
 	int			is_runing;
-	t_frames	frames;
 }				t_core;
 
 /*--------MAIN--------*/

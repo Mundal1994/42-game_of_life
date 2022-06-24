@@ -43,11 +43,11 @@ vis:
 	make -C visualizer/ all;
 
 clean:
-	/bin/rm -f *.o *.txt
+	/bin/rm -f *.o
 	make -C libft/ clean
 
 fclean: clean
-	/bin/rm -f $(NAME) $(NAME2) $(NAME3)
+	/bin/rm -f $(NAME) $(NAME2) $(NAME3) *.txt
 	make -C libft/ fclean
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:52:59 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/23 16:58:13 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:42:06 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,7 @@ int	main(int argc, char **argv)
 		{
 			if (core.sdl.event.type == SDL_QUIT)
 				core.is_runing = 0;
-			if (core.sdl.event.type == SDL_KEYDOWN)
-			{
-				if (core.sdl.event.key.keysym.sym == SDLK_RIGHT)
-				{
-					if (core.map.step < core.map.iterations)
-						core.map.step++;
-				}
-				if (core.sdl.event.key.keysym.sym == SDLK_LEFT)
-				{
-					if (core.map.step > 0)
-						core.map.step--;
-				}
-			}
+			controls(&core);
 		}
 	}
 	exit_visualizer(&core);

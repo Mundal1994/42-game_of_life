@@ -6,7 +6,7 @@
 /*   By: dpalacio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:37:59 by dpalacio          #+#    #+#             */
-/*   Updated: 2022/06/23 16:48:23 by dpalacio         ###   ########.fr       */
+/*   Updated: 2022/06/23 19:48:08 by dpalacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ void	display_step(t_core *core)
 {
 	SDL_Rect	cell;
 	int			x = 0;
-	int			y = core->map.height * core->map.step;
+	int			y = core->map.height * core->map.step + 1;
+	int			x_off;
+	int			y_off;
+
+	x_off = (WIN_W - core->map.width * 20) / 2;
+	y_off = (WIN_H - core->map.height * 20) / 2;
 	cell.x = 0;
 	cell.y = 0;
 	cell.w = 20;
@@ -38,8 +43,8 @@ void	display_step(t_core *core)
 			{
 				if (core->map.matrix[y][x] == 1)
 				{
-					cell.x = x * cell.w;
-					cell.y = y * cell.h - core->map.height * core->map.step * cell.h;
+					cell.x = x * cell.w + x_off;
+					cell.y = y * cell.h - core->map.height * core->map.step * cell.h + y_off;
 					SDL_RenderDrawRect(core->sdl.rend, &cell);
 					SDL_RenderFillRect(core->sdl.rend, &cell);
 				}
@@ -47,5 +52,10 @@ void	display_step(t_core *core)
 			}
 			x = 0;
 			y++;
+		}
+		if (y % core->map.height == 0 && core->map.automatic == 1 && core->map.step < core->map.iterations)
+		{
+			SDL_Delay(core->map.delay);
+			core->map.step++;
 		}
 }
