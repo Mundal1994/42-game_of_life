@@ -38,3 +38,7 @@ CONTROLS
 	LEFT ARROW KEY: previous state
 
 	RIGHT ARROW KEY: next state
+
+## COLLABORATION
+
+Project made in collaporation with Daniel Palacio(https://https://github.com/Danielmdc94) who took care of the visualizer for the project while I focused on the algorithm.
