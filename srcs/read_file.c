@@ -1,5 +1,7 @@
 #include "../includes/life.h"
 
+/*	error handling function that also checks if we need to free malloc	*/
+
 int	error(t_data *data)
 {
 	if (data->map)
@@ -10,6 +12,8 @@ int	error(t_data *data)
 		free(data);
 	return (ERROR);
 }
+
+/*	function that collects the size of the map	*/
 
 static int count_size(FILE *fp, t_data *data)
 {
@@ -34,6 +38,8 @@ static int count_size(FILE *fp, t_data *data)
 	return (0);
 }
 
+/*	mallocs for the map depending on the size of the map	*/
+
 static int	create_map_helper(t_data *data)
 {
 	int	i;
@@ -57,6 +63,8 @@ static int	create_map_helper(t_data *data)
 	}
 	return (0);
 }
+
+/*	reads file line by line and malloc and assigns the map its values	*/
 
 static int	make_maps(FILE *fp, t_data *data)
 {
@@ -87,6 +95,8 @@ static int	make_maps(FILE *fp, t_data *data)
 	data->temp[i] = 0;
 	return (0);
 }
+
+/*	open and read from the file	*/
 
 int	read_file(char *file, t_data *data)
 {

@@ -1,5 +1,7 @@
 #include "../includes/life.h"
 
+/*	checks if digit has been inputted	*/
+
 static int	is_pos_digit(char *argv)
 {
 	int i = 0;
@@ -12,6 +14,8 @@ static int	is_pos_digit(char *argv)
 	}
 	return (TRUE);
 }
+
+/*	initialize function that takes care of calling read_file function and the game_of_life	*/
 
 static int	initialize_functions(char **argv, int i)
 {
@@ -34,6 +38,8 @@ static int	initialize_functions(char **argv, int i)
 	free (data);
 	return (0);
 }
+
+/*	main function that takes care of printing usage or calling initializer functions	*/
 
 int	main(int argc, char **argv)
 {

@@ -1,5 +1,7 @@
 #include "../includes/life.h"
 
+/*	copies content of temporary map to the main map	*/
+
 void	array_copy(t_data *data)
 {
 	int	i;
@@ -18,6 +20,8 @@ void	array_copy(t_data *data)
 	}
 }
 
+/*	prints the last iteration	*/
+
 static void	print_iteration(t_data *data)
 {
 	int	i;
@@ -29,6 +33,8 @@ static void	print_iteration(t_data *data)
 		++i;
 	}
 }
+
+/*	loops through all the iterations and when reaching final iteration it prints the map	*/
 
 void	game_of_life(t_data *data, int iterations)
 {

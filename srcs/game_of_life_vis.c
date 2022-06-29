@@ -13,6 +13,8 @@ static void	write_to_file(t_data *data, FILE *fp, int iteration)
 	}
 }
 
+/*	while iterating x amount of times it will print the new map to a file instead of printing it	*/
+
 void	game_of_life_vis(t_data *data, int iterations)
 {
 	FILE	*fp;
