@@ -40,7 +40,11 @@ static void	count_live_neighbors(t_data *data, int i, int j, int *count)
 	}
 }
 
-/*	checks the count for the live cell	*/
+/*
+**	checking an alive cells neighbors
+**	if there are 2 or 3 surrounding alive cells the alive cell keeps living
+**	or else it will turn into a dead cell
+*/
 
 static int	check_live_cell(t_data *data, int y, int x, int count)
 {
@@ -50,7 +54,10 @@ static int	check_live_cell(t_data *data, int y, int x, int count)
 	return (FALSE);
 }
 
-/*	checks count if dead cell	*/
+/*
+**	checking a dead cells neighbors
+**	if there are 3 surrounding alive cells the dead cell turns into a living cell
+*/
 
 static int	check_dead_cell(t_data *data, int y, int x, int count)
 {

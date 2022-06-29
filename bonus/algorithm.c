@@ -1,5 +1,10 @@
 #include "../includes/life.h"
 
+/*
+**	count the live neighbors
+**	count the cells on the opposet side of the map if reaching the end of the map
+*/
+
 static void	count_live_neighbors(t_data *data, int i, int j, int *count)
 {
 	int	x;
@@ -52,6 +57,12 @@ static void	count_live_neighbors(t_data *data, int i, int j, int *count)
 	}
 }
 
+/*
+**	checking an alive cells neighbors
+**	if there are 2 or 3 surrounding alive cells the alive cell keeps living
+**	or else it will turn into a dead cell
+*/
+
 static int	check_live_cell(t_data *data, int y, int x, int count)
 {
 	count_live_neighbors(data, y, x, &count);
@@ -60,6 +71,11 @@ static int	check_live_cell(t_data *data, int y, int x, int count)
 	return (FALSE);
 }
 
+/*
+**	checking a dead cells neighbors
+**	if there are 3 surrounding alive cells the dead cell turns into a living cell
+*/
+
 static int	check_dead_cell(t_data *data, int y, int x, int count)
 {
 	count_live_neighbors(data, y, x, &count);
@@ -67,6 +83,8 @@ static int	check_dead_cell(t_data *data, int y, int x, int count)
 		return (TRUE);
 	return (FALSE);
 }
+
+/*	looping through each cell to check their neighbors	*/
 
 void	algorithm(t_data *data)
 {

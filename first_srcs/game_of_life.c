@@ -1,5 +1,7 @@
 #include "../includes/life.h"
 
+/*	checks the neighboring cells if they are dead or alive cells	*/
+
 static int	count_live_neighbors(t_data *data, int i, int j)
 {
 	int	end_x;
@@ -35,6 +37,12 @@ static int	count_live_neighbors(t_data *data, int i, int j)
 	return (count);
 }
 
+/*
+**	checking an alive cells neighbors
+**	if there are 2 or 3 surrounding alive cells the alive cell keeps living
+**	or else it will turn into a dead cell
+*/
+
 static int	check_live_cell(t_data *data, int y, int x)
 {
 	int count;
@@ -46,6 +54,11 @@ static int	check_live_cell(t_data *data, int y, int x)
 		return (FALSE);
 }
 
+/*
+**	checking a dead cells neighbors
+**	if there are 3 surrounding alive cells the dead cell turns into a living cell
+*/
+
 static int	check_dead_cell(t_data *data, int y, int x)
 {
 	int count;
@@ -56,6 +69,8 @@ static int	check_dead_cell(t_data *data, int y, int x)
 	else
 		return (FALSE);
 }
+
+/*	looping through each cell to check their neighbors	*/
 
 static void	first_algorithm(t_data *data)
 {
@@ -88,6 +103,8 @@ static void	first_algorithm(t_data *data)
 	}
 }
 
+/*	copy the temporary array to the main map	*/
+
 void	array_copy(t_data *data)
 {
 	int	i;
@@ -106,6 +123,8 @@ void	array_copy(t_data *data)
 	}
 }
 
+/*	printing the map to the terminal	*/
+
 static void	print_iteration(t_data *data)
 {
 	int	i;
@@ -117,6 +136,8 @@ static void	print_iteration(t_data *data)
 		++i;
 	}
 }
+
+/*	does the choosen iterations and ends it with printing to the terminal	*/
 
 void	game_of_life(t_data *data, int iterations)
 {
