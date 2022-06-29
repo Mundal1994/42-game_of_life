@@ -54,4 +54,4 @@ CONTROLS
 
 ## COLLABORATION
 
-Project made in collaporation with Daniel Palacio(https://https://github.com/Danielmdc94) who took care of the visualizer for the project while I focused on the algorithm.
+Project made in collaporation with Daniel Palacio([https://github.com/Danielmdc94](https://github.com/Danielmdc94)) who took care of the visualizer for the project while I focused on the algorithm.
