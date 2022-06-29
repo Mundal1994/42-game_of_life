@@ -25,6 +25,8 @@ occur:
 
 ## HOW TO RUN VISUALIZER
 
+Due to git I have removed the visualizer from the 'master' branch. The visualizer is now only runnable if you are on the branch named 'vis'. Make sure you are on the branch called 'vis' before running the following commands.
+
 	1. run the following command
 		make vis
 	2. visualizer should then compile (can take a few minutes)
