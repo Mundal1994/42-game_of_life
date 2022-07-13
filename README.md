@@ -1,4 +1,4 @@
-## GAME-OF-LIFE
+### GAME-OF-LIFE
 
 ## ABOUT
 
